@@ -62,19 +62,27 @@ Then, write a function named `speaker` that takes in an array of strings and a c
 
 Use `forEach` to build a new array of strings, each string modified by the callback. Return the new array. 
 ------------------------------------------------------------------------------------------------ */
+let arr =['f','g','q'];
 
 const greeting = (word) => {
   // Solution code here...
+  return console.log(word.toUpperCase()+'!');
 };
+
 
 const speaker = (words, callback) => {
   // Solution code here...
+  
+  return  words.forEach(newArr => callback(newArr));
 };
+
+speaker(arr,greeting);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
-Write a function named addValues that takes in an array and a value and pushes the value into the array. This function does not need a return statement.
+Write a function named addValues that takes in an array and a value and pushes the value 
+into the array. This function does not need a return statement.
 
 Then, write a function named addNumbers that takes in four arguments:
   - A number to be added to an array
@@ -110,13 +118,30 @@ The inventory is formatted like this:
   { name: 'blueberries', available: false }
 ]
 
-This function should use forEach to populate your grocery list based on the store's inventory. If the item is available, add it to your list. Return the final list.
+This function should use forEach to populate your grocery list based on the store's inventory.
+ If the item is available, add it to your list. Return the final list.
 ------------------------------------------------------------------------------------------------ */
 
-const createList = (availableItems) => {
-  // Solution code here...
-};
 
+let arr = [
+  { name: 'apples', available: true },
+  { name: 'pears', available: true },
+  { name: 'oranges', available: false },
+  { name: 'bananas', available: true },
+  { name: 'blueberries', available: false }
+];
+let updatedArr=[];
+const createList = (availableItems) =>  { 
+  
+  availableItems.forEach(arrCheck => {                       
+     if(arrCheck.available==true)
+    {
+     updatedArr.push(arrCheck);
+    }
+    return updatedArr;
+  })
+};
+createList(arr);
 /* ------------------------------------------------------------------------------------------------
 STRETCH - CHALLENGE 7
 
