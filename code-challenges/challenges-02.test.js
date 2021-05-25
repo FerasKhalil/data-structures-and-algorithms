@@ -10,6 +10,12 @@ Write a function named raisedToTheThird that takes in an array of numbers and re
 
 const raisedToTheThird = (arr) => {
   // Solution code here...
+  let updatedArr=[];
+  arr.forEach(newArr => {
+    updatedArr.push(Math.pow(newArr,3)); 
+      }
+    )
+    return updatedArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -20,6 +26,11 @@ Write a function named addOne that, given an array of numbers, uses map to retur
 
 const addOne = (arr) => {
   // Solution code here...
+  let newArr=[];
+arr.map(num =>  {
+  newArr.push(num+1);
+} );
+return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -30,6 +41,11 @@ Write a function named addQuestion that, given an array of strings, uses map to 
 
 const addQuestion = (arr) => {
   // Solution code here...
+  let newArr=[];
+    arr.map(num => {
+    newArr.push(num+'?') ;}
+    );
+    return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -44,7 +60,15 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 
 const forLoopTwoToThe = (arr) => {
   // Solution code here...
+  let newArr=[];
+  for (let i=1; i<arr.length; i++ )
+  {
+   newArr.push(pow(2,arr[i]));
+  }
+return newArr;
 };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -54,6 +78,11 @@ Write a function named forEachTwoToThe that produces the same output as your for
 
 const forEachTwoToThe = (arr) => {
   // Solution code here...
+  let updatedArr=[];
+  arr.forEach(newArr=>{
+    updatedArr.push(pow(2,newArr));
+  })
+  return  updatedArr; 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -64,7 +93,13 @@ Write a function named mapTwoToThe that produces the same output as your forLoop
 
 const mapTwoToThe = (arr) => {
   // Solution code here...
+  let updatedArr=[];
+  arr.map(newArr=>{
+    updatedArr.push(pow(2,newArr));
+  })
+  return  updatedArr; 
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
