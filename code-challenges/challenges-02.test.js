@@ -14,7 +14,7 @@ const raisedToTheThird = (arr) => {
   arr.forEach(newArr => {
     updatedArr.push(Math.pow(newArr,3)); 
       }
-    )
+    );
     return updatedArr;
 };
 
@@ -81,7 +81,7 @@ const forEachTwoToThe = (arr) => {
   let updatedArr=[];
   arr.forEach(newArr=>{
     updatedArr.push(pow(2,newArr));
-  })
+  });
   return  updatedArr; 
 };
 
@@ -96,7 +96,7 @@ const mapTwoToThe = (arr) => {
   let updatedArr=[];
   arr.map(newArr=>{
     updatedArr.push(pow(2,newArr));
-  })
+  });
   return  updatedArr; 
 };
 
