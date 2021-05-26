@@ -118,7 +118,9 @@ const mapTwoToThe = (arr) => {
   return updatedArr;
 };
 
-/* ------------------------------------------------------------------------------------------------
+
+
+/* -----------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
 Write a function named charCode that, given an array of letters as an input, uses map to return a new array where each element is the result of the `charCodeAt` method on the original array element.
