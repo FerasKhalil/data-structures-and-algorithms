@@ -10,32 +10,57 @@ Write a function named raisedToTheThird that takes in an array of numbers and re
 
 const raisedToTheThird = (arr) => {
   // Solution code here...
+  let updatedArr = [];
+  arr.forEach(newArr => {
+    updatedArr.push(Math.pow(newArr, 3));
+  }
+  );
+  return updatedArr;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
-Write a function named addOne that, given an array of numbers, uses map to return a new array with each value simply incremented by 1. 
+Write a function named addOne that, given an array of numbers, uses map to return a new 
+array with each value simply incremented by 1. 
 ------------------------------------------------------------------------------------------------ */
 
 const addOne = (arr) => {
   // Solution code here...
+  let newArr = [];
+  arr.map(num => {
+    newArr.push(num + 1);
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
-Write a function named addQuestion that, given an array of strings, uses map to return a new array containing each string followed by a question mark character.
+Write a function named addQuestion that, given an array of strings, uses map to 
+return a new array containing each string followed by a question mark character.
 ------------------------------------------------------------------------------------------------ */
+
 
 const addQuestion = (arr) => {
   // Solution code here...
+  let newArr = [];
+  arr.map(num => {
+    newArr.push(num + '?');
+  }
+  );
+  return newArr;
 };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
-Write a function named forLoopTwoToThe that, given an array of integers as input, iterates over the array and returns a new array. The returned array should contain the result of raising 2 to the power of the original input element.
+Write a function named forLoopTwoToThe that, given an array of integers as input,
+ iterates over the array and returns a new array. The returned array should contain
+  the result of raising 2 to the power of the original input element.
 
 You may choose to complete this challenge using a for loop, for...in syntax, or for...of syntax.
 
@@ -44,18 +69,31 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 
 const forLoopTwoToThe = (arr) => {
   // Solution code here...
+  let newArr = [];
+  
+  for (let i = 0; i < arr.length; i++) 
+  {
+    newArr.push(Math.pow(2,arr[i]));
+  }
+
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
-Write a function named forEachTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 4, but uses forEach instead of a for loop.
+Write a function named forEachTwoToThe that produces the same output as your
+ forLoopTwoToThe function from challenge 4, but uses forEach instead of a for loop.
 ------------------------------------------------------------------------------------------------ */
 
 const forEachTwoToThe = (arr) => {
   // Solution code here...
+  let updatedArr = [];
+  arr.forEach(newArr => {
+    updatedArr.push(Math.pow(2, newArr));
+  });
+  return updatedArr;
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
@@ -64,7 +102,13 @@ Write a function named mapTwoToThe that produces the same output as your forLoop
 
 const mapTwoToThe = (arr) => {
   // Solution code here...
+  let updatedArr = [];
+  arr.map(newArr => {
+    updatedArr.push(Math.pow(2, newArr));
+  });
+  return updatedArr;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -76,9 +120,16 @@ Read the MDN documentation on String.charCodeAt() if necessary.
 For example: charCode(['h','i']) returns [104, 105].
 ------------------------------------------------------------------------------------------------ */
 
-const charCode = (arr) => {
+const raisedToTheThird = (arr) => {
   // Solution code here...
+  let updatedArr = [];
+  arr.forEach(newArr => {
+    updatedArr.push(Math.pow(newArr, 3));
+  }
+  );
+  return updatedArr;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -204,19 +255,19 @@ describe('Testing challenge 1', () => {
   });
 });
 
-describe('Testing challenge 2', () => {
+xdescribe('Testing challenge 2', () => {
   test('It should add one to all the numbers in the array', () => {
     expect(addOne([2, 3, 5, 11])).toStrictEqual([3, 4, 6, 12]);
   });
 });
 
-describe('Testing challenge 3', () => {
+xdescribe('Testing challenge 3', () => {
   test('It should add a question mark to the end of each string', () => {
     expect(addQuestion(['hello', '301', 'students'])).toStrictEqual(['hello?', '301?', 'students?']);
   });
 });
 
-describe('Testing challenge 4', () => {
+xdescribe('Testing challenge 4', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(forLoopTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(forLoopTwoToThe([0, 4, 5]).length).toStrictEqual(3);
@@ -227,7 +278,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-describe('Testing challenge 5', () => {
+xdescribe('Testing challenge 5', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(forEachTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(forEachTwoToThe([0, 4, 5]).length).toStrictEqual(3);
@@ -238,7 +289,7 @@ describe('Testing challenge 5', () => {
   });
 });
 
-describe('Testing challenge 6', () => {
+xdescribe('Testing challenge 6', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(mapTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(mapTwoToThe([0, 4, 5]).length).toStrictEqual(3);
