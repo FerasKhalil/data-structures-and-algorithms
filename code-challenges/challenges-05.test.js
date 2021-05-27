@@ -35,46 +35,104 @@ const toLastNames = people => {
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
-Write a function named addValues that, given an array of numbers as input, uses reduce to add the values in the array.
+Write a function named addValues that, given an array of numbers as input, uses
+ reduce to add the values in the array.
+ xdescribe('Testing challenge 2', () => {
+  test('It should add the values of an array', () => {
+    expect(addValues([1, 2, 3, 4, 5])).toStrictEqual(15);
+    expect(addValues([])).toStrictEqual(0);
+    expect(addValues([1, 2, 3, 4, -5])).toStrictEqual(5);
+  });
+});
 
 ------------------------------------------------------------------------------------------------ */
 
-const addValues = (arr) => {
-  // Solution code here...
-};
+  const addValues = (arr) => {
+    // Solution code here...
+     const reducer = (add,num) => {return add+num;} 
+      return arr.reduce(reducer,0);
+  };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
-Write a function named addPurchases that, given an array of objects as input, uses reduce to find the total amount purchased. Each object contains the keys `item` and `purchasePrice` like the example.
+Write a function named addPurchases that, given an array of objects as input,
+ uses reduce to find the total amount purchased. Each object contains the keys
+  `item` and `purchasePrice` like the example.
 
 {
   item: 'switch'
   purchasePrice: 399
 }
-
+describe('Testing challenge 3', () => {
+  test('It should add the purchase price', () => {
+    expect(addPurchases([{item: 'switch', purchasePrice: 399},
+     {item: 'toothpaste', purchasePrice: 2}])).toStrictEqual(401);
+    expect(addPurchases([])).toStrictEqual(0);
+  });
+});
 ------------------------------------------------------------------------------------------------ */
 
 const addPurchases = (arr) => {
   // Solution code here...
-};
-
+  // const total = (add,num) => { 
+  // return add.purchasePrice+num.purchasePrice;
+  // } 
+  // return arr.reduce(total);
+  // const total = Object.values(arr).reduce((t, n) => t.purchasePrice + n);
+  // const total = (arr,num) => {return arr.purchasePrice+num;} 
+  // return arr.reduce(total,0);
+  // const total = (add,num) => {return add+num;}
+  // let result=0;
+  // arr.forEach(element=>{
+  //  return result = element.purchasePrice;
+  // }); 
+  // return arr.reduce(total,result);
+  // let reducer=(accumulator, currentValue, currentIndex, array)=>{
+  //   accumulator = accumulator.purchasePrice+currentValue.purchasePrice;
+  //   return accumulator;
+  //   }
+  //   return arr.reduce(reducer);
+  // };
+  let reducer=arr.reduce((accumulator, currentValue, currentIndex, array)=>{
+    // accumulator = accumulator+currentValue.purchasePrice;
+    accumulator[currentValue] = accumulator+currentValue.purchasePrice;
+    return accumulator;
+    },);
+    
+  };
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
-Write a function named countNumberOfElements that, given an array as input, uses reduce to count the number of elements in the array.
+Write a function named countNumberOfElements that, given an array as input,
+ uses reduce to count the number of elements in the array.
 
 Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
   // Solution code here...
+  // let x=arr.length;
+  // return x;
+  
+const reducer=(accumulator, currentValue, currentIndex, array)=>{
+  return currentIndex+1;
+  }
+  return arr.reduce(reducer);
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
-Write a function named returnNames that, given the Star Wars data, below, uses reduce to return an array containing the names of the characters.
+Write a function named returnNames that, given the Star Wars data, below, 
+uses reduce to return an array containing the names of the characters.
+describe('Testing challenge 5', () => {
+  test('It should return an array continaing the names of the characters', () => {
+    expect(returnNames(starWarsData)).toStrictEqual([ 'Luke Skywalker', 'C-3PO', 'R2-D2', 
+    'Darth Vader', 'Leia Organa' ]);
+    expect(returnNames(starWarsData).length).toStrictEqual(5);
+  });
+});
 ------------------------------------------------------------------------------------------------ */
 
 let starWarsData = [{
@@ -129,18 +187,33 @@ let starWarsData = [{
 
 const returnNames = (arr) => {
   // Solution code here...
+  let newArr=[];
+  let red=(accumulator, currentValue, currentIndex, array)=>{
+    arr.forEach(element=>{
+  newArr.push(element.name);
+    });
+    return newArr;
+    }
+    return arr.reduce(red);
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
-Write a function named reversedString that takes in a string and returns a string with the letters in reverse order.
+Write a function named reversedString that takes in a string and returns a string with
+ the letters in reverse order.
 
 Note: You must use reduce for this challenge. You may not use the built-in .reverse() string method.
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
   // Solution code here...
+
+  reverseString = (s)=> {
+    return s.split('').reverse().join('');
+  }
+  return str.reduce(reverseString);
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -296,7 +369,7 @@ DO NOT CHANGE any of the below code.
 Run your tests from the console: jest challenges-09.test.js
 ------------------------------------------------------------------------------------------------ */
 
-describe('Testing challenge 1', () => {
+xdescribe('Testing challenge 1', () => {
   test('It should convert object to full name string', () => {
 
     const people = [{ firstName: 'Jane', lastName: 'Doe' }, { firstName: 'James', lastName: 'Bond' }];
@@ -314,7 +387,7 @@ xdescribe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should add the purchase price', () => {
     expect(addPurchases([{item: 'switch', purchasePrice: 399}, {item: 'toothpaste', purchasePrice: 2}])).toStrictEqual(401);
     expect(addPurchases([])).toStrictEqual(0);
