@@ -94,13 +94,10 @@ const addPurchases = (arr) => {
   //   }
   //   return arr.reduce(reducer);
   // };
-  let reducer=arr.reduce((accumulator, currentValue, currentIndex, array)=>{
-    // accumulator = accumulator+currentValue.purchasePrice;
-    accumulator[currentValue] = accumulator+currentValue.purchasePrice;
-    return accumulator;
-    },);
-    
-  };
+  
+  const total = Object.values(add).reduce((t, {purchasePrice}) => t + value, 0);
+  return total;  
+};
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
@@ -186,15 +183,13 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  // Solution code here...
   let newArr=[];
-  let red=(accumulator, currentValue, currentIndex, array)=>{
-    arr.forEach(element=>{
-  newArr.push(element.name);
-    });
-    return newArr;
-    }
-    return arr.reduce(red);
+  
+ const total = Object.values(arr).reduce((t, {name}) =>{
+   if (!newArr.includes(name))
+   newArr.push(name);
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -387,7 +382,7 @@ xdescribe('Testing challenge 2', () => {
   });
 });
 
-describe('Testing challenge 3', () => {
+xdescribe('Testing challenge 3', () => {
   test('It should add the purchase price', () => {
     expect(addPurchases([{item: 'switch', purchasePrice: 399}, {item: 'toothpaste', purchasePrice: 2}])).toStrictEqual(401);
     expect(addPurchases([])).toStrictEqual(0);
@@ -400,7 +395,7 @@ xdescribe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should return an array continaing the names of the characters', () => {
     expect(returnNames(starWarsData)).toStrictEqual([ 'Luke Skywalker', 'C-3PO', 'R2-D2', 'Darth Vader', 'Leia Organa' ]);
     expect(returnNames(starWarsData).length).toStrictEqual(5);
