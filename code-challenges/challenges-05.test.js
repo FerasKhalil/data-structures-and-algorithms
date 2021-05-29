@@ -212,7 +212,7 @@ const reversedString = (str) => {
   // Solution code here...
 
   reverseString = (first,last)=> {
-    return last+first;
+    return first-last;
   }
   return str.reduce(reverseString);
 
