@@ -73,31 +73,8 @@ describe('Testing challenge 3', () => {
 });
 ------------------------------------------------------------------------------------------------ */
 
-const addPurchases = (arr) => {
-  // Solution code here...
-  // const total = (add,num) => { 
-  // return add.purchasePrice+num.purchasePrice;
-  // } 
-  // return arr.reduce(total);
-  // const total = Object.values(arr).reduce((t, n) => t.purchasePrice + n);
-  // const total = (arr,num) => {return arr.purchasePrice+num;} 
-  // return arr.reduce(total,0);
-  // const total = (add,num) => {return add+num;}
-  // let result=0;
-  // arr.forEach(element=>{
-  //  return result = element.purchasePrice;
-  // }); 
-  // return arr.reduce(total,result);
-  // let reducer=(accumulator, currentValue, currentIndex, array)=>{
-  //   accumulator = accumulator.purchasePrice+currentValue.purchasePrice;
-  //   return accumulator;
-  //   }
-  //   return arr.reduce(reducer);
-  // };
-  
-  const total = Object.values(add).reduce((t, {purchasePrice}) => t + value, 0);
-  return total;  
-};
+const addPurchases = (arr) => {  // Solution code here... 
+   let newArr=arr.reduce((acc,value)=>{  return acc+=value.purchasePrice;  },0);  return newArr;};
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
@@ -182,15 +159,9 @@ let starWarsData = [{
   gender: 'female'
 }];
 
-const returnNames = (arr) => {
-  let newArr=[];
-  
- const total = Object.values(arr).reduce((t, {name}) =>{
-   if (!newArr.includes(name))
-   newArr.push(name);
-  });
-  return newArr;
-};
+const returnNames = (arr) => {  // Solution code here...
+    let newArr=[];  let reducedNewArr=arr.reduce((acc,value)=>{   
+       acc++;    newArr.push(value.name);    return acc;  },0);  return newArr;};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -208,15 +179,9 @@ describe('Testing challenge 6', () => {
 
 ------------------------------------------------------------------------------------------------ */
 
-const reversedString = (str) => {
-  // Solution code here...
-
-  reverseString = (first,last)=> {
-    return first-last;
-  }
-  return str.reduce(reverseString);
-
-};
+const reversedString = (str) => {  // Solution code here... 
+   let string=str.split("");  let newString=string.reduce((acc,value,index)=>{
+          return acc+=string[string.length-1 - index];       },"");  return newString;};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -371,7 +336,7 @@ DO NOT CHANGE any of the below code.
 Run your tests from the console: jest challenges-09.test.js
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should convert object to full name string', () => {
 
     const people = [{ firstName: 'Jane', lastName: 'Doe' }, { firstName: 'James', lastName: 'Bond' }];
@@ -381,7 +346,7 @@ xdescribe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should add the values of an array', () => {
     expect(addValues([1, 2, 3, 4, 5])).toStrictEqual(15);
     expect(addValues([])).toStrictEqual(0);
@@ -389,20 +354,20 @@ xdescribe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should add the purchase price', () => {
     expect(addPurchases([{item: 'switch', purchasePrice: 399}, {item: 'toothpaste', purchasePrice: 2}])).toStrictEqual(401);
     expect(addPurchases([])).toStrictEqual(0);
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return the length of the array', () => {
     expect(countNumberOfElements([1, 2, 3, 4, 5])).toStrictEqual(5);
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should return an array continaing the names of the characters', () => {
     expect(returnNames(starWarsData)).toStrictEqual([ 'Luke Skywalker', 'C-3PO', 'R2-D2', 'Darth Vader', 'Leia Organa' ]);
     expect(returnNames(starWarsData).length).toStrictEqual(5);
