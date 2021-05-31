@@ -59,25 +59,42 @@ let characters = [
 const sortByChildren = (charArray) => {
   // Solution code here...
   return characters.sort((a,b)=>{
-    let x= a.children.length;
-    let y= b.children.length;
+    let x = a.children.length;
+    let y = b.children.length;
     if(x > y){
       return 1;
     }
     else if (x < y){
       return -1;
     }
-  })
+  });
 };
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
-Write a function named containsW that takes in a string. This function should use a regular expression pattern to return true if the string contains the letter 'w' in lower case or false if it does not. 
+Write a function named containsW that takes in a string. This function should use
+a regular expression pattern to return true if the string contains the letter 'w' in lower'
+ case or false if it does not. 
+ 
+ describe('Testing challenge 2', () => {
+  test('It should return true if the input contains a lower case w', () => {
+    expect(containsW('hello world')).toBe(true);
+  });
+  test('It should return false if the input contains an upper case W', () => {
+    expect(containsW('Hello World')).toBe(false);
+  });
+  test('It should return false if the input does not contain a w', () => {
+    expect(containsW('hello everyone')).toBe(false);
+  })
+})
+
 
 ------------------------------------------------------------------------------------------------ */
 
 const containsW = (str) => {
   // Solution code here...
+  let regex= /w/g; 
+  return regex.test(str);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -90,21 +107,54 @@ For example:
 '12345' returns true
 'h3llo world' returns true
 'hello world' returns false
+
+
+describe('Testing challenge 3', () => {
+  test('It should return true if the input is a number', () => {
+    expect(isNum(1234567890)).toBeTruthy();
+    expect(isNum('12345')).toBeTruthy();
+  });
+  test('It should return true if the input contains a number', () => {
+    expect(isNum('h3llo w0rld')).toBeTruthy();
+  });
+  test('It should return false if the input does not contain a number', () => {
+    expect(isNum('hello world')).toBeFalsy();
+    expect(isNum('')).toBeFalsy();
+  });
+});
+
 ------------------------------------------------------------------------------------------------ */
 
 const isNum = (input) => {
   // Solution code here...
+  let regex =/\d/g;
+  return regex.test(input);
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
 Write a function named containsWorld that takes in a string or number of any length. This function should use a regular expression pattern to return true if the input contains the word 'world' all in lower-case letters, and false if the input does not.
 
+
+describe('Testing challenge 4', () => {
+  test('It should return true if the input contains the word school in lower case', () => {
+    expect(containsWorld('hello world')).toBe(true);
+  });
+  test('It should return false if the input contains the word school with any upper case letters', () => {
+    expect(containsWorld('Hello World')).toBe(false);
+  });
+  test('It should return false if the input does not contain the word school', () => {
+    expect(containsWorld('hello everyone')).toBe(false);
+  });
+})
+
+
 ------------------------------------------------------------------------------------------------ */
 
 const containsWorld = (input) => {
   // Solution code here...
+  let regex4=/world/g;
+  return regex4.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -115,10 +165,16 @@ Write a function named isCapitalized that takes in a string. This function shoul
 Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
+
 const isCapitalized = (str) => {
   // Solution code here...
+  let regex= str.match(/\b[A-Z](\w)*/g);
+  if(regex===null){
+    return [];
+  }else {
+    return regex;
+  }
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
@@ -127,7 +183,13 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 
 const citiesAtoJ = (arr) => {
   // Solution code here...
+  let regex=/[A-J]/;
+  return arr.filter((element)=>{
+    if (regex.test(element[0]))
+    return element;
+  });
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -209,7 +271,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return true if the input contains a lower case w', () => {
     expect(containsW('hello world')).toBe(true);
   });
@@ -221,7 +283,7 @@ xdescribe('Testing challenge 2', () => {
   })
 })
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return true if the input is a number', () => {
     expect(isNum(1234567890)).toBeTruthy();
     expect(isNum('12345')).toBeTruthy();
@@ -235,7 +297,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return true if the input contains the word school in lower case', () => {
     expect(containsWorld('hello world')).toBe(true);
   });
@@ -247,7 +309,7 @@ xdescribe('Testing challenge 4', () => {
   });
 })
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should only return words that begin with a capital letter', () => {
     const capitalResult = isCapitalized('We only want to Return the Words that begin With a capital Letter');
 
@@ -260,7 +322,7 @@ xdescribe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   let cities = ['Cleveland', 'San Diego', 'Birmingham', 'Seattle', 'Miami', 'New York City', 'Omaha', 'Portland', 'Austin', 'Boston', 'Newport Beach', 'Hoboken'];
 
   test('It should return the cities whose names begin with the letters A through J', () => {
