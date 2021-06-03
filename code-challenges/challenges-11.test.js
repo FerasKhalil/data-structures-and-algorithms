@@ -24,16 +24,15 @@ describe('Testing challenge 1', () => {
     expect(transformToLis({})).toStrictEqual([]);
   });
 });
-
 ------------------------------------------------------------------------------------------------ */
 
 function transformToLis(obj){
   // Solution code here...
-  let newArr1 = []
+  let newArr = []
   for (const [key, value] of Object.entries(obj)) {
-    newArr1.push(`<li>${key}: ${value}</li>`);
+    newArr.push(`<li>${key}: ${value}</li>`);
   }
-  return newArr1;
+  return newArr;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -44,6 +43,7 @@ Write a function named count that, given an integer and an array of arrays, uses
 Note: You might need to use the same method more than once.
 
 For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
+
 
 describe('Testing challenge 2', () => {
   test('It should return the number of times the input is in the nested arrays', () => {
@@ -60,22 +60,21 @@ describe('Testing challenge 2', () => {
 
 const count = (target, input) => {
   // Solution code here...
-  let checker = 0;
-  input.map(item1 => {
-    item1.map(item2 => {
-      if (item2 === target) {
-        checker += 1;
+  let sum=0;
+  input.map(element =>{
+    element.map(element2=>{
+      if(element2 == target){
+        sum=sum++;
       }
     });
   });
-  return checker;
+  return sum;
 };
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
-Write a function that, given an array of integer arrays as input, calculates the total sum of all the elements in the array.
+Write a function that, given an array of integer arrays as input, calculates the total sum of all the item2s in the array.
 
 You may want to use filter, map, or reduce for this problem, but are not required to. You may need to use the same method more than once.
 
@@ -92,14 +91,15 @@ describe('Testing challenge 3', () => {
 
 const totalSum = (input) => {
   // Solution code here...
-  let total = 0;
-  input.map(element => {
-    element.map(arrElement => {
-      total += arrElement;
+  let total=0;
+  input.map(element =>{
+    element.map(element2=>{
+      total+=element2;
     });
   });
   return total;
 };
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
@@ -110,7 +110,6 @@ This function should first remove any elements that are not numbers or are not d
 This function should then raise 2 to the power of the resulting numbers, returning an array of arrays.
 
 For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
-
 
 describe('Testing challenge 4', () => {
   test('It should return numbers divisible by five, then raise two to the power of the resulting numbers', () => {
@@ -130,12 +129,13 @@ describe('Testing challenge 4', () => {
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
   let newArr = [];
-  input.map(element => {
-    let newArr2 = [];
+  input.map(item1 => {
+    let newArr2 =[];
     newArr.push(newArr2);
-    element.map(element2 => {
-      if (typeof (element2) === 'number' && element2 % 5 === 0)
-        newArr2.push(Math.pow(2, element2));
+    item1.map(item2 => {
+      if(typeof(item2) === 'number' && item2 % 5 === 0 ) {
+        newArr2.push(Math.pow(2,item2));
+      }
     });
   });
   return newArr;
@@ -158,7 +158,6 @@ describe('Testing challenge 5', () => {
     expect(findMaleAndFemale([{ name: 'person', gender: 'female' }, { gender: 'lol' }, { name: 'persontwo', gender: 'male' }])).toStrictEqual('person and persontwo');
   });
 });
-
 ------------------------------------------------------------------------------------------------ */
 
 let starWarsData = [{
@@ -214,14 +213,13 @@ let starWarsData = [{
 
 let findMaleAndFemale = (data) => {
   // Solution code here...
-  let theNames = '';
-  data.map((element, index) => {
-
-    if (element.gender == 'male' || element.gender == 'female') {
-      theNames += element.name + ' and ';
+  let resName = '';
+  data.map((element) => {
+   if (element.gender === 'male' || element.gender === 'female') {
+      resName=resName+ element.name + ' and ';
     }
   });
-  return theNames;
+  return resName;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -234,18 +232,19 @@ describe('Testing challenge 6', () => {
     expect(findShortest(starWarsData)).toStrictEqual('R2-D2');
   });
 });
-
 ------------------------------------------------------------------------------------------------ */
+
 let findShortest = (data) => {
   // Solution code here...
-  let min = data[0];
-  data.map(element => {
-    if (parseInt(element.height) < parseInt(min.height)) {
-      min = element;
-    }
-  });
-  return min.name;
+    let min = data[0];
+    data.map(element => {
+      if(parseInt(element.height) < parseInt(min.height)){
+        min = element;
+      }
+    });
+    return min.name;
 };
+
 /* ------------------------------------------------------------------------------------------------
 TESTS
 
@@ -259,8 +258,8 @@ Run your tests from the console: jest challenges-10.test.js
 
 describe('Testing challenge 1', () => {
   test('It should return a list of key value pairs inside of li tags', () => {
-    expect(transformToLis({ name: 'bob', age: 32 })[0]).toStrictEqual(`<li>name: bob</li>`);
-    expect(transformToLis({ name: 'bob', age: 32 })[1]).toStrictEqual(`<li>age: 32</li>`);
+    expect(transformToLis({name: 'bob', age: 32})[0]).toStrictEqual(`<li>name: bob</li>`);
+    expect(transformToLis({name: 'bob', age: 32})[1]).toStrictEqual(`<li>age: 32</li>`);
     expect(transformToLis({})).toStrictEqual([]);
   });
 });
