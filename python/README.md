@@ -1,5 +1,10 @@
 # Data Structures and Algorithms
 
+
+# whiteboard for reverse Array
+- link to the white board (https://miro.com/app/board/o9J_l5RZSfY=/)
+
+
 ## Language: `Python`
 
 ### Folder and Challenge Setup
