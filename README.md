@@ -13,3 +13,13 @@ Each day, you'll add one new file to this folder to do your work for the day's a
 ### 401 Data Structures, Code Challenges
 
 - Please follow the instructions specific to your 401 language, which can be found in the directory below, matching your course.
+# Reverse an Array
+<!-- Description of the challenge -->
+- this application gets an array and reverses its elements
+
+## Whiteboard Process
+<!-- Embedded whiteboard image -->
+[array-reverse](Screenshot(211).png)
+
+## Approach & Efficiency
+<!-- What approach did you take? Discuss Why. What is the Big O space/time for this approach? -->
