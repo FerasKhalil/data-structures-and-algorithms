@@ -13,3 +13,9 @@ Each day, you'll add one new file to this folder to do your work for the day's a
 ### 401 Data Structures, Code Challenges
 
 - Please follow the instructions specific to your 401 language, which can be found in the directory below, matching your course.
+
+# whiteboard for reverse Array
+- link to the white board (https://miro.com/app/board/o9J_l5RZSfY=/)
+
+# whiteboard for insertShiftArray 
+- link to miro whiteboard (https://miro.com/app/board/o9J_l5exNKI=/)
